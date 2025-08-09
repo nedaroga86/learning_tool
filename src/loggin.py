@@ -1,6 +1,6 @@
 import streamlit as st
 
-from lenguage_profile import main_Program
+from language_profile import main_Program
 
 
 if "logged_in" not in st.session_state:
