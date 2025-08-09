@@ -1,11 +1,14 @@
+import os
+
 import streamlit as st
-from requests import options
+import pandas as pd
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+examns_df =  os.path.join(BASE_DIR, '..', 'data','exam_types.pkl')
 
 
-sentiment_mapping = ["one", "two", "three", "four", "five"]
-selected = st.feedback("stars")
 def main_Program():
-    st.title("lenguage profile")
+    st.title("Language profile")
     target_language = st.selectbox("Target Language", options= ["French",  "Japanese"]
                             ,key="target_language"
                             ,index=None)
@@ -13,9 +16,31 @@ def main_Program():
                             ,key="base_language"
                             ,index=None)
     if target_language is not None and base_language is not None:
-        exam_scope = st.selectbox("Select Examn", options= ["TEF Canada", "TCF Canada", "JLPT"]
-                                ,key="exam"
-                                ,index=None)
+        examen_df = pd.read_pickle(examns_df)
+        filtered_exams = examen_df[(examen_df['Language'] == target_language)
+        ]
+        exam_scope = st.selectbox("Select Exam", options= filtered_exams['Examen'].unique()
+                                 ,key="exam"
+                                 ,index=None)
+
+        if exam_scope is not None:
+            level = filtered_exams[(filtered_exams['Examen'] == exam_scope)]['Levels'].unique()
+
+
+            col, col2 = st.columns(2)
+            with col:
+                current_level = st.selectbox("Current Level", options= level
+                                          ,key="cur_level"
+                                          ,index=None)
+
+            with col2:
+                goal_level = st.selectbox("Goal Level", options= level
+                                         ,key="goal_level"
+                                         ,index=None)
+            if current_level is not None and goal_level is not None:
+                prep_time = st.slider("Preparation Time (in months)", min_value=1, max_value=12, value=3, step=1)
+
+
 
 
 
