@@ -1,0 +1,34 @@
+# Distribution / packaging
+.Python
+env/
+.env
+venv/
+*.venv
+build/
+dist/
+*.egg-info/
+*.eggs
+
+# PyCharm and intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+*.xml
+*.txt
+src/*.csv
+src/*.xlsx
+*.csv
+*.xlsx
+
+
+# streamlit
+src/.streamlit
+
+# What IFs
+*.pickle
+*.db
+*.bat
+*.ps1
+/.idea/
+/.idea/
