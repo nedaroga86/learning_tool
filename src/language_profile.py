@@ -3,6 +3,8 @@ import os
 import streamlit as st
 import pandas as pd
 
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 examns_df =  os.path.join(BASE_DIR, '..', 'data','exam_types.pkl')
 
@@ -19,6 +21,7 @@ def main_Program():
         examen_df = pd.read_pickle(examns_df)
         filtered_exams = examen_df[(examen_df['Language'] == target_language)
         ]
+
         exam_scope = st.selectbox("Select Exam", options= filtered_exams['Examen'].unique()
                                  ,key="exam"
                                  ,index=None)
@@ -26,17 +29,19 @@ def main_Program():
         if exam_scope is not None:
             level = filtered_exams[(filtered_exams['Examen'] == exam_scope)]['Levels'].unique()
 
-
             col, col2 = st.columns(2)
             with col:
                 current_level = st.selectbox("Current Level", options= level
                                           ,key="cur_level"
                                           ,index=None)
+                if current_level is not None:
+                    index_value = filtered_exams[(filtered_exams['Levels'] == current_level)]['Levels'].index[0]
+                    goal_levels = filtered_exams[(filtered_exams['Examen'] == exam_scope)&(filtered_exams.index > index_value)]['Levels'].unique()
+                    with col2:
+                        goal_level = st.selectbox("Goal Level", options= goal_levels
+                                                 ,key="goal_level"
+                                                 ,index=None)
 
-            with col2:
-                goal_level = st.selectbox("Goal Level", options= level
-                                         ,key="goal_level"
-                                         ,index=None)
             if current_level is not None and goal_level is not None:
                 prep_time = st.slider("Preparation Time (in months)", min_value=1, max_value=12, value=3, step=1)
 
