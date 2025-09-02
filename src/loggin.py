@@ -18,17 +18,18 @@ if not st.user.is_logged_in:
     if loggin_button('Login with Google'):
         st.login("google")
 else:
-    st.session_state.profile = get_user_profile(st.user.email)
-    if st.session_state.profile == None:
-        get_new_profile()
-    else:
-        pages = [
-            st.Page("main_window.py", title="Home"),
-            st.Page("profile_info.py", title="Profile"),
+    st.text('test')
+    # st.session_state.profile = get_user_profile(st.user.email)
+    # if st.session_state.profile == None:
+    #     get_new_profile()
+    #else:
+    pages = [
+        st.Page("main_window.py", title="Home"),
+        st.Page("profile_info.py", title="Profile"),
 
-        ]
-        pg = st.navigation(pages, position="top")
-        pg.run()
-    if st.button('Logout'):
-        st.logout()
+    ]
+    pg = st.navigation(pages, position="top")
+    pg.run()
+if st.button('Logout'):
+    st.logout()
 
