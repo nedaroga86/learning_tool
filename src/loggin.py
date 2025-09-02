@@ -1,11 +1,13 @@
 import time
-
+import sys
+import os
 import streamlit as st
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from language_profile import get_new_profile
-from save_profile import get_user_profile
-from buttons import loggin_button
-from main_window import main_Window
+from src.language_profile import get_new_profile
+from src.save_profile import get_user_profile
+from src.buttons import loggin_button
+
 
 st.set_page_config(page_title="Popo App", layout= 'wide')
 
