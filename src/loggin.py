@@ -4,7 +4,7 @@ import os
 import streamlit as st
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.language_profile import get_new_profile
+# from src.language_profile import get_new_profile
 # from src.save_profile import get_user_profile
 from src.buttons import loggin_button
 
