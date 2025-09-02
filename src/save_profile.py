@@ -1,4 +1,5 @@
 import os
+import time
 
 import gspread
 import streamlit as st
@@ -12,6 +13,15 @@ scope = ["https://www.googleapis.com/auth/spreadsheets",
          "https://www.googleapis.com/auth/drive"]
 
 creds = st.secrets["gcp_service_account"]
+
+
+pk = st.secrets["gcp_service_account"]["private_key"]
+# Debe imprimirse MULTILÍNEA con encabezado y pie en líneas separadas
+print(pk.splitlines()[0])       # -> "-----BEGIN PRIVATE KEY-----"
+print(pk.splitlines()[-1])      # -> "-----END PRIVATE KEY-----"
+print(len(pk.splitlines()))     # varias líneas (no 1)
+time.sleep(10)
+
 client = gspread.service_account_from_dict(creds)
 
 # Abre el spreadsheet por ID
