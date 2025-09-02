@@ -1,12 +1,10 @@
 import os
-
 import streamlit as st
 import pandas as pd
-
 from save_profile import save_profile
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-examns_df =  os.path.join(BASE_DIR, '..', 'data','exam_types.pkl')
+examns_df = os.path.join(BASE_DIR, '..', 'data','exam_types.pkl')
 
 
 def get_new_profile():

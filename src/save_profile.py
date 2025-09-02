@@ -1,9 +1,8 @@
 import os
 import time
-
 import gspread
 import streamlit as st
-from google.oauth2.service_account import Credentials
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 json_file =  os.path.join(BASE_DIR, '..', '.streamlit','service_account.json')
