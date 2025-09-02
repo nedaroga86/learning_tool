@@ -3,13 +3,13 @@ import os
 import streamlit as st
 import pandas as pd
 
-
+from save_profile import save_profile
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 examns_df =  os.path.join(BASE_DIR, '..', 'data','exam_types.pkl')
 
 
-def main_Program():
+def get_new_profile():
     st.title("Language profile")
     target_language = st.selectbox("Target Language", options= ["French",  "Japanese"]
                             ,key="target_language"
@@ -45,12 +45,15 @@ def main_Program():
             if current_level is not None and goal_level is not None:
                 prep_time = st.slider("Preparation Time (in months)", min_value=1, max_value=12, value=3, step=1)
 
+    if st.button("Save Profile"):
+        email = st.user.email
+        save_profile(email, target_language, base_language, exam_scope, current_level, goal_level, prep_time)
 
 
 
 
 if __name__ == '__main__':
-    main_Program()
+    get_new_profile()
     st.markdown(
         """
         <style>
