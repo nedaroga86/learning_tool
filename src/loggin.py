@@ -10,6 +10,7 @@ from src.buttons import loggin_button
 
 
 st.set_page_config(page_title="Popo App", layout= 'wide')
+st.text("SECRETS DISPONIBLES:", list(st.secrets.keys()), file=sys.stderr)
 
 if not st.user.is_logged_in:
     st.header("Login Part")
