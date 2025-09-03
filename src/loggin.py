@@ -10,7 +10,6 @@ from src.buttons import loggin_button
 
 
 st.set_page_config(page_title="Popo App", layout= 'wide')
-st.write("SECRETS DISPONIBLES:", list(st.secrets.keys()))
 
 if not st.user.is_logged_in:
     st.header("Login Part")
@@ -19,6 +18,7 @@ if not st.user.is_logged_in:
     if loggin_button('Login with Google'):
         st.login("google")
 else:
+    st.header("Test Part")
     st.session_state.profile = get_user_profile(st.user.email)
     if st.session_state.profile == None:
         get_new_profile()
