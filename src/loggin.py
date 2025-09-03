@@ -22,9 +22,9 @@ else:
     # st.write(st.user.is_logged_in)
     # st.write(st.user.email)
     # pem = st.secrets["gcp_service_account"]["private_key"]
-    lines = pem.splitlines()
-    st.write(lines[0], "...", lines[-1], f"({len(lines)} líneas)")
-    time.sleep(15)
+    # lines = pem.splitlines()
+    # st.write(lines[0], "...", lines[-1], f"({len(lines)} líneas)")
+    # time.sleep(15)
     st.session_state.profile = get_user_profile(st.user.email)
     if st.session_state.profile == None:
         get_new_profile()
