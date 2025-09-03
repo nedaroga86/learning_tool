@@ -21,6 +21,7 @@ else:
     st.header("Test Part")
     st.write(st.user.is_logged_in)
     st.write(st.user.email)
+    st.write(st.secrets["gcp_service_account"]["private_key"])
     st.session_state.profile = get_user_profile(st.user.email)
     if st.session_state.profile == None:
         get_new_profile()
