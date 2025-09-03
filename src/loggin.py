@@ -19,6 +19,8 @@ if not st.user.is_logged_in:
         st.login("google")
 else:
     st.header("Test Part")
+    st.write(st.user.is_logged_in)
+    st.write(st.user.email)
     st.session_state.profile = get_user_profile(st.user.email)
     if st.session_state.profile == None:
         get_new_profile()
