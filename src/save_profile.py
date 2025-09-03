@@ -2,7 +2,6 @@ import os
 import time
 import gspread
 import streamlit as st
-from google.oauth2 import service_account
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
