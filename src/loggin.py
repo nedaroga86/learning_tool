@@ -4,8 +4,8 @@ import os
 import streamlit as st
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# from src.language_profile import get_new_profile
-# from src.save_profile import get_user_profile
+from src.language_profile import get_new_profile
+from src.save_profile import get_user_profile
 from src.buttons import loggin_button
 
 
@@ -18,18 +18,17 @@ if not st.user.is_logged_in:
     if loggin_button('Login with Google'):
         st.login("google")
 else:
-    st.text('test')
-    # st.session_state.profile = get_user_profile(st.user.email)
-    # if st.session_state.profile == None:
-    #     get_new_profile()
-    #else:
-    pages = [
-        st.Page("main_window.py", title="Home"),
-        st.Page("profile_info.py", title="Profile"),
+    st.session_state.profile = get_user_profile(st.user.email)
+    if st.session_state.profile == None:
+        get_new_profile()
+    else:
+        pages = [
+            st.Page("main_window.py", title="Home"),
+            st.Page("profile_info.py", title="Profile"),
 
-    ]
-    pg = st.navigation(pages, position="top")
-    pg.run()
-if st.button('Logout'):
-    st.logout()
+        ]
+        pg = st.navigation(pages, position="top")
+        pg.run()
+    if st.button('Logout'):
+        st.logout()
 
