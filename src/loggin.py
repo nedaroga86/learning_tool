@@ -18,10 +18,10 @@ if not st.user.is_logged_in:
     if loggin_button('Login with Google'):
         st.login("google")
 else:
-    st.header("Test Part")
-    st.write(st.user.is_logged_in)
-    st.write(st.user.email)
-    pem = st.secrets["gcp_service_account"]["private_key"]
+    # st.header("Test Part")
+    # st.write(st.user.is_logged_in)
+    # st.write(st.user.email)
+    # pem = st.secrets["gcp_service_account"]["private_key"]
     lines = pem.splitlines()
     st.write(lines[0], "...", lines[-1], f"({len(lines)} líneas)")
     time.sleep(15)
