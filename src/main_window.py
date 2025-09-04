@@ -17,7 +17,7 @@ def main_Window():
             image = st.container(border=True)
         with col2:
             if 'gemini' not in st.session_state:
-                st.session_state.gemini = "Gemini's response will appear here."
+                st.text("Gemini's response will appear here.")
             else:
                 st.text(st.session_state.gemini)
 
