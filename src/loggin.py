@@ -25,7 +25,7 @@ else:
         pages = [
             st.Page("main_window.py", title="Home"),
             st.Page("profile_info.py", title="Profile"),
-            st.Page("profile_info.py", title="Logout"),
+            st.Page("logout.py", title="Logout"),
 
         ]
         pg = st.navigation(pages, position="top")
