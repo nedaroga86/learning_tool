@@ -1,6 +1,7 @@
 from google import genai
+import streamlit as st
 
-key = "AIzaSyCKc4SgOjetOdO2OSVCUPKI_2ZN5f1sCSM"
+key =  st.secrets["gemini_conf"]["api_key"]
 
 def call_gemini(prompt):
 
@@ -16,4 +17,3 @@ def call_gemini(prompt):
 
 
 text = call_gemini("Escribe un poema sobre la inteligencia artificial en español.")
-s
