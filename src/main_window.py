@@ -19,7 +19,8 @@ def main_Window():
             if 'gemini' not in st.session_state:
                 st.session_state.gemini = "Gemini's response will appear here."
             else:
-                st.session_state.gemini = st.container(border=True)
+                st.text(st.session_state.gemini)
+
 
     text = st.text_area("Prompt", height=200, max_chars=1000, key="input_text", help="ready to hear from you")
     if st.button("Submit"):
