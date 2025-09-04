@@ -45,7 +45,7 @@ def get_new_profile():
 
     if st.button("Save Profile"):
         email = st.user.email
-        #save_profile(email, target_language, base_language, exam_scope, current_level, goal_level, prep_time)
+        save_profile(email, target_language, base_language, exam_scope, current_level, goal_level, prep_time)
 
 
 
