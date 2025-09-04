@@ -1,0 +1,19 @@
+from google import genai
+
+key = "AIzaSyCKc4SgOjetOdO2OSVCUPKI_2ZN5f1sCSM"
+
+def call_gemini(prompt):
+
+    client = genai.Client(api_key=key)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
+    if response.text:
+        return response.text
+    else:
+        return "No response from Gemini API"
+
+
+text = call_gemini("Escribe un poema sobre la inteligencia artificial en español.")
+s

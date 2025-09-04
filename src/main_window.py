@@ -1,5 +1,8 @@
 import streamlit as st
 
+from src.gemini_assistant import call_gemini
+
+
 def main_Window():
     st.title("Main Window")
     st.write("This is the main window of the application.")
@@ -13,8 +16,14 @@ def main_Window():
         with col1:
             image = st.container(border=True)
         with col2:
-            text = st.container(border=True)
+            if 'gemini' not in st.session_state:
+                st.session_state.gemini = "Gemini's response will appear here."
+            else:
+                st.session_state.gemini = st.container(border=True)
 
-    text = st.text_area("Prompt", height=200, max_chars=1000, key="input_text", help="Escriba o pegue el texto que desea procesar aquí.")
+    text = st.text_area("Prompt", height=200, max_chars=1000, key="input_text", help="ready to hear from you")
+    if st.button("Submit"):
+        st.session_state.gemini =  call_gemini(text)
+        st.rerun()
 
 main_Window()
